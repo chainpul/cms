@@ -1,22 +1,18 @@
 ---
-// Halaman ini khusus untuk Panel Admin Sveltia CMS
+// Halaman Admin Daily RWA
 ---
 <!doctype html>
 <html lang="id">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Mencegah halaman admin muncul di pencarian Google -->
     <meta name="robots" content="noindex, nofollow" />
     <title>Admin Panel | Daily RWA</title>
-
-    <!-- Menggunakan Sveltia CMS via JSDelivr CDN (Lebih stabil dari unpkg) -->
-    <script 
-      src="https://cdn.jsdelivr.net/npm/sveltia-cms@latest/dist/sveltia-cms.js" 
-      type="module"
-    ></script>
   </head>
   <body>
-    <!-- Sveltia CMS akan merender antarmuka di sini secara otomatis -->
+    <!-- Skrip Sveltia dengan fallback -->
+    <script type="module">
+      import 'https://cdn.jsdelivr.net/npm/sveltia-cms@latest/dist/sveltia-cms.js';
+    </script>
   </body>
 </html>
