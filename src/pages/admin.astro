@@ -1,5 +1,5 @@
 ---
-// Halaman Admin Daily RWA
+export const prerender = true;
 ---
 <!doctype html>
 <html lang="id">
@@ -8,11 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
     <title>Admin Panel | Daily RWA</title>
+    <!-- Kita gunakan skrip module dengan integrity check otomatis dari JSDelivr -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/sveltia-cms@0.39.0/dist/sveltia-cms.js"></script>
   </head>
   <body>
-    <!-- Skrip Sveltia dengan fallback -->
-    <script type="module">
-      import 'https://cdn.jsdelivr.net/npm/sveltia-cms@latest/dist/sveltia-cms.js';
-    </script>
+    <noscript>Anda perlu mengaktifkan JavaScript untuk membuka panel admin.</noscript>
   </body>
 </html>
