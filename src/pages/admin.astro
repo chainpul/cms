@@ -1,16 +1,22 @@
 ---
-// Admin Panel menggunakan Decap CMS (Sangat Stabil)
+// Halaman ini khusus untuk Panel Admin Sveltia CMS
 ---
 <!doctype html>
 <html lang="id">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex" />
+    <!-- Mencegah halaman admin muncul di pencarian Google -->
+    <meta name="robots" content="noindex, nofollow" />
     <title>Admin Panel | Daily RWA</title>
+
+    <!-- Menggunakan Sveltia CMS via JSDelivr CDN (Lebih stabil dari unpkg) -->
+    <script 
+      src="https://cdn.jsdelivr.net/npm/sveltia-cms@latest/dist/sveltia-cms.js" 
+      type="module"
+    ></script>
   </head>
   <body>
-    <!-- Script Decap CMS -->
-    <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- Sveltia CMS akan merender antarmuka di sini secara otomatis -->
   </body>
 </html>

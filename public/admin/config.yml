@@ -1,7 +1,9 @@
 backend:
   name: github
-  repo: chainpul/cms # GANTI INI NANTI
+  repo: chainpul/cms
   branch: main
+  # Menggunakan autentikasi internal Sveltia untuk Cloudflare Pages
+  auth_type: implicit
 
 media_folder: "public/assets/images/posts"
 public_folder: "/assets/images/posts"
@@ -12,10 +14,11 @@ collections:
     folder: "src/content/blog"
     create: true
     slug: "{{slug}}"
+    format: "frontmatter" # Memastikan format file adalah Markdown dengan header
     fields:
       - { label: "Judul Berita", name: "title", widget: "string" }
       - { label: "Ringkasan", name: "summary", widget: "text" }
-      - { label: "Tanggal Publikasi", name: "pubDate", widget: "datetime" }
+      - { label: "Tanggal Publikasi", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD" }
       - { label: "Kategori", name: "category", widget: "select", options: ["Market", "Tech", "Regulation", "Op-Ed"] }
-      - { label: "Gambar Utama", name: "heroImage", widget: "image" }
+      - { label: "Gambar Utama", name: "heroImage", widget: "image", choose_url: false }
       - { label: "Isi Berita", name: "body", widget: "markdown" }
