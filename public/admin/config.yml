@@ -3,7 +3,7 @@ backend:
   repo: chainpul/cms
   branch: main
 
-media_folder: "public/assets/images/posts"
+media_folder: "assets/images/posts"
 public_folder: "/assets/images/posts"
 
 collections:
