@@ -1,17 +1,39 @@
 ---
+// 1. WAJIB untuk Astro 4 dengan output: "hybrid" agar halaman ini jadi statis
+export const prerender = true;
 
+import { getCollection } from 'astro:content';
+import MainLayout from '@layouts/MainLayout.astro';
+
+// 2. Ambil koleksi blog
+const allPosts = await getCollection('blog');
+
+// 3. Urutkan berdasarkan tanggal terbaru
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="Beranda Berita">
+  <section style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+    {posts.map(post => (
+      <article style="border-bottom: 1px solid #ccc; padding-bottom: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+        <p style="color: #990000; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; margin: 0;">
+          {post.data.category || 'News'}
+        </p>
+        
+        <a href={`/posts/${post.slug}`} style="text-decoration: none; color: inherit; display: block;">
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0; line-height: 1.2;">
+            {post.data.title}
+          </h2>
+        </a>
+
+        <p style="font-size: 0.95rem; color: #444; line-height: 1.5; margin: 0;">
+          {post.data.summary}
+        </p>
+
+        <time style="font-size: 0.8rem; color: #888; font-family: sans-serif;">
+          {new Date(post.data.pubDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}
+        </time>
+      </article>
+    ))}
+  </section>
+</MainLayout>

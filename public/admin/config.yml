@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: chainpul/cms # GANTI INI NANTI
+  branch: main
+
+media_folder: "public/assets/images/posts"
+public_folder: "/assets/images/posts"
+
+collections:
+  - name: "blog"
+    label: "Berita RWA"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Berita", name: "title", widget: "string" }
+      - { label: "Ringkasan", name: "summary", widget: "text" }
+      - { label: "Tanggal Publikasi", name: "pubDate", widget: "datetime" }
+      - { label: "Kategori", name: "category", widget: "select", options: ["Market", "Tech", "Regulation", "Op-Ed"] }
+      - { label: "Gambar Utama", name: "heroImage", widget: "image" }
+      - { label: "Isi Berita", name: "body", widget: "markdown" }

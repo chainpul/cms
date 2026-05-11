@@ -1,0 +1,54 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const siteName = "Daily RWA";
+---
+
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title ? `${title} | ${siteName}` : siteName}</title>
+    <meta name="description" content={description || "World Digital Assets & Tokenization News"} />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style is:global>
+      * { box-sizing: border-box; }
+      body { 
+        font-family: 'Inter', sans-serif; 
+        max-width: 1000px; 
+        margin: 0 auto; 
+        padding: 0 1rem;
+        background-color: #fff1e5; 
+        color: #333;
+      }
+      h1, h2, .logo { font-family: 'Playfair Display', serif; }
+      nav { 
+        display: flex; justify-content: space-between; align-items: center; 
+        padding: 2rem 0; border-bottom: 3px double #333; 
+      }
+      .logo { font-size: 2.5rem; font-weight: 900; text-decoration: none; color: #000; }
+      .nav-links a { margin-left: 1.5rem; text-decoration: none; color: #333; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; }
+      footer { text-align: center; padding: 3rem 0; border-top: 1px solid #e9decf; margin-top: 4rem; font-size: 0.8rem; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="logo">DAILY <span style="color: #990000;">RWA</span></a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+      </div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      &copy; {new Date().getFullYear()} {siteName}. World Digital Assets & Tokenization News.
+    </footer>
+  </body>
+</html>
